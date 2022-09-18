@@ -1,12 +1,23 @@
-import React from 'react';
- 
+import React, {useState} from 'react';
 import './App.css';
+import { getMonth } from "./util";
+import CalendarHeader from "./components/CalendarHeader";
+import SideBar from "./components/Sidebar";
+import Month from './components/Month'
 
 function App() {
+  const [currentMonth, setCurrentMonth] = useState(getMonth);
+ 
   return (
-    <h1 className="text-3xl font-bold underline">
-    Hello world!
-  </h1>
+     <React.Fragment>
+      <div className="h-screen flex flex-col">
+        <CalendarHeader />
+        <div className="flex flex-1">
+          <SideBar />
+          <Month month={currentMonth}/>
+        </div>
+      </div>
+     </React.Fragment>
   );
 }
 
